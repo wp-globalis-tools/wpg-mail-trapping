@@ -34,5 +34,5 @@ Define WPGMT_MAIL_INTERCEPTION_RECIPIENTS in your config file, with the intercep
 
  ```php
 // Add mail recipient
-define('WPGMT_MAIL_INTERCEPTION_RECIPIENTS', 'admin@example.com');
+define('WPGMT_MAIL_INTERCEPTION_RECIPIENTS', serialize(['admin@example.com','admin2@example.com']));
 ```
