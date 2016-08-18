@@ -13,9 +13,9 @@
 
 namespace WPG\MailTrapping;
 
-if (WP_ENV !== 'production' && defined('WPGMT_MAIL_INTERCEPTION_RECIPIENTS') && false != WPGMT_MAIL_INTERCEPTION_RECIPIENTS) {
+if (WP_ENV !== 'production' && defined('WPG_MAIL_INTERCEPTION') && false != WPG_MAIL_INTERCEPTION) {
 	add_filter('wp_mail', function($args) {
-		$recipients = @unserialize(WPGMT_MAIL_INTERCEPTION_RECIPIENTS);
+		$recipients = @unserialize(WPG_MAIL_INTERCEPTION);
 		if(is_array($recipients)) {
 			$args['to'] = $recipients;
 		}
