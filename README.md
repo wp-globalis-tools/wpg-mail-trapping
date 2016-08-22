@@ -30,9 +30,11 @@ Define WP_ENV in your config file :
 define('WP_ENV', 'your-environment');
 ```
 
-Define WPG_MAIL_INTERCEPTION in your config file, with the interception mail recipient
+Define WPG_MAIL_TRAPPING in your config file, with the interception mail recipient
 
  ```php
 // Add mail recipient
-define('WPG_MAIL_INTERCEPTION', serialize(['admin@example.com','admin2@example.com']));
+define('WPG_MAIL_TRAPPING', serialize(['admin@example.com','admin2@example.com']));
+or
+define('WPG_MAIL_TRAPPING', false);
 ```
