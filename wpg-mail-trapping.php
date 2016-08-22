@@ -24,7 +24,7 @@ if (WP_ENV !== 'production' && defined('WPG_MAIL_TRAPPING') && false != WPG_MAIL
 		}
 		if(is_array($recipients)) {
 			$args['to'] = $recipients;
-			$args['subject'] = '[Original mail send to : '.$original_recipients.'] '.$args['subject'];
+			$args['subject'] = '[Original mail sent to : '.$original_recipients.'] '.$args['subject'];
 		}
 		return $args;
 	});
