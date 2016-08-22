@@ -16,8 +16,15 @@ namespace WPG\MailTrapping;
 if (WP_ENV !== 'production' && defined('WPG_MAIL_TRAPPING') && false != WPG_MAIL_TRAPPING) {
 	add_filter('wp_mail', function($args) {
 		$recipients = @unserialize(WPG_MAIL_TRAPPING);
+		if(is_array($args['to'])) {
+			$original_recipients = implode(',',$args['to']);
+		}
+		else {
+			$original_recipients = $args['to'];
+		}
 		if(is_array($recipients)) {
 			$args['to'] = $recipients;
+			$args['subject'] = '[Original mail send to : '.$original_recipients.'] '.$args['subject'];
 		}
 		return $args;
 	});
