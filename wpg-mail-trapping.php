@@ -11,7 +11,7 @@
  * Tested up to:        4.6.0
  */
 
-namespace WPG\MailTrapping;
+namespace Globalis\MailTrapping;
 
 if (WP_ENV !== 'production' && defined('WPG_MAIL_TRAPPING') && false != WPG_MAIL_TRAPPING) {
 	add_filter('wp_mail', function($args) {
