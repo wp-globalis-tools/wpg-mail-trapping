@@ -6,9 +6,9 @@
  * Author:              Pierre Dargham, Matthieu Guerry, Globalis Media Systems
  * Author URI:          https://github.com/wp-globalis-tools/
  *
- * Version:             1.0.0
+ * Version:             0.2.0
  * Requires at least:   4.0.0
- * Tested up to:        4.6.0
+ * Tested up to:        4.7.1
  */
 
 namespace Globalis\MailTrapping;

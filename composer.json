@@ -1,0 +1,16 @@
+{
+    "name": "globalis/wpg-mail-trapping",
+    "description": "Prevent sending emails from non-production stages",
+    "type": "wordpress-muplugin",
+    "homepage": "https://github.com/wp-globalis-tools/wpg-mail-trapping",
+		"authors": [
+			{
+				"name": "Pierre Dargham",
+				"homepage": "https://github.com/pierre-dargham/"
+			},
+			{
+				"name": "GLOBALIS media systems",
+				"homepage": "https://www.globalis-ms.com/"
+			}
+		]
+}
