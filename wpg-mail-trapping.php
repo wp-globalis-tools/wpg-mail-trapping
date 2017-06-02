@@ -2,16 +2,17 @@
 /**
  * Plugin Name:         WPG Mail Trapping
  * Plugin URI:          https://github.com/wp-globalis-tools/wpg-mail-trapping
- * Description:         Prevent sending emails from non-production stages
- * Author:              Pierre Dargham, Matthieu Guerry, Globalis Media Systems
- * Author URI:          https://github.com/wp-globalis-tools/
+ * Description:         Prevent sending emails from non-production environments
+ * Author:              Pierre Dargham, Globalis Media Systems
+ * Author URI:          https://www.globalis-ms.com/
+ * License:             GPL2
  *
- * Version:             0.2.0
+ * Version:             0.4.0
  * Requires at least:   4.0.0
- * Tested up to:        4.7.1
+ * Tested up to:        4.7.8
  */
 
-namespace Globalis\MailTrapping;
+namespace Globalis\WP\MailTrapping;
 
 if (WP_ENV !== 'production' && defined('WPG_MAIL_TRAPPING') && false != WPG_MAIL_TRAPPING) {
 	add_filter('wp_mail', function($args) {
