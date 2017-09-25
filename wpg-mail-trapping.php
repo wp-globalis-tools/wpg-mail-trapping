@@ -7,31 +7,44 @@
  * Author URI:          https://www.globalis-ms.com/
  * License:             GPL2
  *
- * Version:             0.4.0
+ * Version:             1.0.0
  * Requires at least:   4.0.0
- * Tested up to:        4.7.8
+ * Tested up to:        4.8.2
  */
 
 namespace Globalis\WP\MailTrapping;
 
-if (WP_ENV !== 'production' && defined('WPG_MAIL_TRAPPING') && false != WPG_MAIL_TRAPPING) {
-	add_filter('wp_mail', function($args) {
-		$recipients = @unserialize(WPG_MAIL_TRAPPING);
-		if(is_array($args['to'])) {
-			$original_recipients = implode(', ', $args['to']);
-		}
-		else {
-			$original_recipients = $args['to'];
-		}
-		if(is_array($recipients)) {
-			if(defined('WP_HOME')) {
-				$env = str_replace(['http://', 'https://'], ['', ''], WP_HOME);
-			} else {
-				$env = WP_ENV;
-			}
-			$args['to'] = $recipients;
-			$args['subject'] = '[' . $env . ' : Mail to '.$original_recipients.'] '.$args['subject'];
-		}
-		return $args;
-	});
+if (WP_ENV === 'production') {
+    return;
 }
+
+if (defined('WPG_MAIL_TRAPPING') && false === WPG_MAIL_TRAPPING) {
+    return;
+}
+
+add_filter('wp_mail', function ($args) {
+    if (is_array($args['to'])) {
+        $original_recipients = implode(', ', $args['to']);
+    } else {
+        $original_recipients = $args['to'];
+    }
+
+    if (is_serialized(WPG_MAIL_TRAPPING)) {
+        $args['to'] = unserialize(WPG_MAIL_TRAPPING);
+    } elseif (is_string(WPG_MAIL_TRAPPING)) {
+        $args['to'] = WPG_MAIL_TRAPPING;
+    } else {
+        $args['to'] = '';
+    }
+
+    if (defined('WP_HOME')) {
+        $home_url = trailingslashit(WP_HOME);
+    } else {
+        $home_url = home_url('/');
+    }
+    $home_url = str_replace(['http://', 'https://'], ['', ''], $home_url);
+
+    $args['subject'] = '[' . $home_url . ' : Mail to ' . $original_recipients . '] ' . $args['subject'];
+
+    return $args;
+});
