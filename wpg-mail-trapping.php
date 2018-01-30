@@ -7,7 +7,7 @@
  * Author URI:          https://www.globalis-ms.com/
  * License:             GPL2
  *
- * Version:             1.0.0
+ * Version:             1.0.1
  * Requires at least:   4.0.0
  * Tested up to:        4.8.2
  */
@@ -18,7 +18,7 @@ if (WP_ENV === 'production') {
     return;
 }
 
-if (defined('WPG_MAIL_TRAPPING') && false === WPG_MAIL_TRAPPING) {
+if (!defined('WPG_MAIL_TRAPPING') || false === WPG_MAIL_TRAPPING) {
     return;
 }
 
